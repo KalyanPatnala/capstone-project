@@ -1,0 +1,26 @@
+# Default values for php-postgres.
+
+# PHP App Configuration
+php:
+  image: php:8.1-apache
+  replicaCount: 1
+  servicePort: 80
+  appPort: 8081
+  dbHost: "php-postgres-postgres"
+  dbUser: "myuser"
+  dbPassword: "mypassword"
+  dbName: "mydb"
+  hostPath:
+    enabled: true                # Set this to true if using hostPath
+    path: /mnt/data/php          # Path on the host where data will be stored
+
+# PostgreSQL Database Configuration
+postgres:
+  image: postgres:15
+  replicaCount: 1
+  dbName: "mydb"
+  dbUser: "myuser"
+  dbPassword: "mypassword"
+  hostPath:
+    enabled: true                # Set this to true if using hostPath
+    path: /mnt/data/postgres     # Path on the host where data will be stored
